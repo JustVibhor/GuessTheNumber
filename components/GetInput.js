@@ -10,7 +10,7 @@ function GetInput() {
         <Pressable style={styles.button}>
           <Text>Reset</Text>
         </Pressable>
-        <Pressable style={styles.button} onPress={}>
+        <Pressable style={styles.button}>
           <Text>Confirm</Text>
         </Pressable>
       </View>
