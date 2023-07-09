@@ -1,21 +1,8 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
-import Heading from "./components/Heading";
-import GetInput from "./components/GetInput";
+import { StyleSheet } from "react-native";
+import StartGameScreen from "./screens/StartGameScreen";
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Heading />
-      <GetInput />
-      <StatusBar style="auto" />
-    </View>
-  );
+  return <StartGameScreen />;
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#ba390e",
-  },
-});
+const styles = StyleSheet.create({});
