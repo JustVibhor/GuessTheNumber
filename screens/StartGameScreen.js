@@ -3,17 +3,23 @@ import PrimaryButton from "../components/PrimaryButton";
 
 function StartGameScreen() {
   return (
-    <View style={styles.buttonContainer}>
+    <View style={styles.inputContainer}>
       <TextInput
         style={styles.numberInput}
         maxLength={2}
         keyboardType="number-pad"
-        // good for some specific ui requirement like autocorrect off for email address
+        // good for some specific ui requirement like auto correct off for email address
         // autoCapitalize="none"
         // autoCorrect={false}
       />
-      <PrimaryButton>Reset</PrimaryButton>
-      <PrimaryButton>Confirm</PrimaryButton>
+      <View style={styles.buttonsContainer}>
+        <View style={styles.buttonContainer}>
+          <PrimaryButton>Reset</PrimaryButton>
+        </View>
+        <View style={styles.buttonContainer}>
+          <PrimaryButton>Confirm</PrimaryButton>
+        </View>
+      </View>
     </View>
   );
 }
@@ -21,7 +27,9 @@ function StartGameScreen() {
 export default StartGameScreen;
 
 const styles = new StyleSheet.create({
-  buttonContainer: {
+  inputContainer: {
+    justifyContent: "center",
+    alignItems: "center",
     padding: 16,
     marginHorizontal: 24,
     borderRadius: 8,
@@ -44,5 +52,13 @@ const styles = new StyleSheet.create({
     fontWeight: "bold",
     width: 50,
     textAlign: "center",
+  },
+
+  buttonsContainer: {
+    flexDirection: "row",
+  },
+
+  buttonContainer: {
+    flex: 1,
   },
 });
