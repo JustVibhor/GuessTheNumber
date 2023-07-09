@@ -4,7 +4,14 @@ import PrimaryButton from "../components/PrimaryButton";
 function StartGameScreen() {
   return (
     <View style={styles.buttonContainer}>
-      <TextInput style={styles.numberInput} maxLength={2} />
+      <TextInput
+        style={styles.numberInput}
+        maxLength={2}
+        keyboardType="number-pad"
+        // good for some specific ui requirement like autocorrect off for email address
+        // autoCapitalize="none"
+        // autoCorrect={false}
+      />
       <PrimaryButton>Reset</PrimaryButton>
       <PrimaryButton>Confirm</PrimaryButton>
     </View>
