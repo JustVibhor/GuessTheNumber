@@ -1,6 +1,16 @@
 import { StyleSheet, View, Text } from "react-native";
 import Title from "../components/Title";
 
+function generateRandomNumber(min, max, exclude) {
+  const rndNum = Math.floor(Math.random() * (max - min)) + min;
+
+  if (rndNum === exclude) {
+    return generateRandomNumber(min, max, exclude);
+  } else {
+    return rndNum;
+  }
+}
+
 function GameScreen() {
   return (
     <View style={styles.screen}>
@@ -19,14 +29,5 @@ const styles = new StyleSheet.create({
   screen: {
     flex: 1,
     padding: 24,
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: "bold",
-    color: "#1232ff",
-    textAlign: "center",
-    borderWidth: 2,
-    borderColor: "#1232ff",
-    padding: 12,
   },
 });
