@@ -17,9 +17,6 @@ function generateRandomNumber(min, max, exclude) {
 let minBoundary = 1;
 let maxBoundary = 100;
 
-// maximum stack size exceeded
-// happens due to useEffect func as it runs after the component itself, so when currentguess = usernumber, it causes error which can be handled by using hard coded values of min and max
-
 function GameScreen({ userNumber, onGameOver }) {
   const initialGuess = generateRandomNumber(1, 100, userNumber);
   const [currentGuess, setCurrentGuess] = useState(initialGuess);
