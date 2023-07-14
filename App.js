@@ -38,11 +38,19 @@ export default function App() {
     setCountRounds(0);
   }
 
+  function countRoundHandler(rounds) {
+    setCountRounds(rounds);
+  }
+
   let screen = <StartGameScreen onPickNumber={pickedNumberHandler} />;
 
   if (userNumber) {
     screen = (
-      <GameScreen userNumber={userNumber} onGameOver={gameOverHandler} />
+      <GameScreen
+        userNumber={userNumber}
+        onGameOver={gameOverHandler}
+        countRoundHandler={countRoundHandler}
+      />
     );
   }
 

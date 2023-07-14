@@ -19,17 +19,20 @@ function generateRandomNumber(min, max, exclude) {
 
 let minBoundary = 1;
 let maxBoundary = 100;
+let rounds = 0;
 
-function GameScreen({ userNumber, onGameOver }) {
+function GameScreen({ userNumber, onGameOver, countRoundHandler }) {
   const initialGuess = generateRandomNumber(1, 100, userNumber);
   const [currentGuess, setCurrentGuess] = useState(initialGuess);
 
   useEffect(() => {
     if (currentGuess === userNumber) {
+      countRoundHandler(rounds);
       onGameOver();
     }
   }, [currentGuess, userNumber, onGameOver]);
 
+  // to reset the game we can reset the boundaries using useEffect with empty array
   useEffect(() => {
     minBoundary = 1;
     maxBoundary = 100;
@@ -59,6 +62,7 @@ function GameScreen({ userNumber, onGameOver }) {
       maxBoundary,
       currentGuess
     );
+    rounds++;
     setCurrentGuess(newRndNumber);
   }
 
