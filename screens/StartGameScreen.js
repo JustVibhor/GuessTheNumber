@@ -1,13 +1,22 @@
-import { TextInput, View, StyleSheet, Alert, Text } from "react-native";
-import PrimaryButton from "../components/ui/PrimaryButton";
 import { useState } from "react";
-import Colors from "../constants/colors";
-import Title from "../components/ui/Title";
+import {
+  Alert,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+  useWindowDimensions,
+} from "react-native";
 import Card from "../components/ui/Card";
 import InstructionText from "../components/ui/InstructionText";
+import PrimaryButton from "../components/ui/PrimaryButton";
+import Title from "../components/ui/Title";
+import Colors from "../constants/colors";
 
 function StartGameScreen({ onPickNumber }) {
   const [enteredNumber, setEnteredNumber] = useState("");
+
+  const { width, height } = useWindowDimensions();
 
   function numberInputHandler(enteredText) {
     setEnteredNumber(enteredText);
@@ -29,8 +38,11 @@ function StartGameScreen({ onPickNumber }) {
     onPickNumber(chosenNumber);
   }
 
+  const marginTopDistance = height < 380 ? 30 : 100;
+
   return (
-    <View style={styles.rootContainer}>
+    // this will adjust whenever device orientation changes
+    <View style={[styles.rootContainer, { marginTop: marginTopDistance }]}>
       <Title>Guess the Number</Title>
       <Card>
         <InstructionText>Enter a Number</InstructionText>

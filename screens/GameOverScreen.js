@@ -1,6 +1,6 @@
-import { View, Image, StyleSheet, Text, Dimensions } from "react-native";
-import Title from "../components/ui/Title";
+import { Dimensions, Image, StyleSheet, Text, View } from "react-native";
 import PrimaryButton from "../components/ui/PrimaryButton";
+import Title from "../components/ui/Title";
 
 function GameOverScreen({ roundsNumber, userNumber, onStartNewGame }) {
   return (
