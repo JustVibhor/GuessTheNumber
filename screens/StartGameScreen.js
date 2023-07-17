@@ -2,6 +2,7 @@ import { useState } from "react";
 import {
   Alert,
   KeyboardAvoidingView,
+  Platform,
   ScrollView,
   StyleSheet,
   Text,
@@ -90,7 +91,7 @@ const styles = new StyleSheet.create({
     height: 50,
     fontSize: 32,
     borderBottomColor: Colors.accent500,
-    borderBottomWidth: 2,
+    borderBottomWidth: Platform.OS({ android: 2, ios: 0 }),
     color: Colors.accent500,
     marginVertical: 8,
     fontWeight: "bold",

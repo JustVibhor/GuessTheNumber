@@ -1,28 +1,55 @@
-import { Dimensions, Image, StyleSheet, Text, View } from "react-native";
+import {
+  Dimensions,
+  Image,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+  useWindowDimensions,
+} from "react-native";
 import PrimaryButton from "../components/ui/PrimaryButton";
 import Title from "../components/ui/Title";
 
 function GameOverScreen({ roundsNumber, userNumber, onStartNewGame }) {
-  return (
-    <View style={styles.rootContainer}>
-      <Title>Game Over</Title>
-      <View style={styles.imageContainer}>
-        <Image
-          style={styles.image}
-          source={require("../assets/images/success.png")}
-        />
-      </View>
-      <Text style={styles.summaryText}>
-        Your phone needed{" "}
-        <Text style={styles.summaryHighlight}>{roundsNumber}</Text> rounds to
-        guess the number{" "}
-        <Text style={styles.summaryHighlight}>{userNumber}</Text> .
-      </Text>
-      <PrimaryButton style={styles.button} onPress={onStartNewGame}>
-        Start New Game
-      </PrimaryButton>
-    </View>
+  const { width } = useWindowDimensions();
+
+  let imageSize = 300;
+
+  if (width > 500) {
+    imageSize = 100;
+  }
+
+  const imageStyle = {
+    width: imageSize,
+    height: imageSize,
+    borderRadius: imageSize / 2,
+    margin: 18,
+  };
+
+  let content = (
+    <>
+      <ScrollView style={styles.screen}>
+        <Title>Game Over</Title>
+        <View style={[styles.imageContainer, imageStyle]}>
+          <Image
+            style={styles.image}
+            source={require("../assets/images/success.png")}
+          />
+        </View>
+        <Text style={styles.summaryText}>
+          Your phone needed{" "}
+          <Text style={styles.summaryHighlight}>{roundsNumber}</Text> rounds to
+          guess the number{" "}
+          <Text style={styles.summaryHighlight}>{userNumber}</Text> .
+        </Text>
+        <PrimaryButton style={styles.button} onPress={onStartNewGame}>
+          Start New Game
+        </PrimaryButton>
+      </ScrollView>
+    </>
   );
+
+  return <View style={styles.rootContainer}>{content}</View>;
 }
 
 export default GameOverScreen;
@@ -30,6 +57,9 @@ export default GameOverScreen;
 const deviceWidth = Dimensions.get("window").width;
 
 const styles = StyleSheet.create({
+  screen: {
+    flex: 1,
+  },
   rootContainer: {
     flex: 1,
     padding: 24,
